@@ -1,17 +1,12 @@
-import { extend } from "@react-three/fiber";
-import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
-import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
-import roboto from "../assets/Roboto Black_Regular.json";
-
-extend({ TextGeometry });
+import { Text3D } from "@react-three/drei";
+import roboto from "../assets/RobotoBlack_Regular.json";
 
 const Text = ({ position }) => {
-  const font = new FontLoader().parse(roboto);
   return (
-    <mesh position={position}>
-      <textGeometry args={["Hello World!!", { font, size: 12, height: 3 }]} />
-      <meshPhysicalMaterial attach="material" color={"white"} />
-    </mesh>
+    <Text3D font={roboto} position={position} size={13} height={10}>
+      Hello world!
+      <meshNormalMaterial />
+    </Text3D>
   );
 };
 
